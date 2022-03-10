@@ -6,7 +6,7 @@ Movies are identified by users by their number which is at the same time the rat
 
 Program provides following operations:
 
-addUser <parentUserId> <userId>  
+addUser [parentUserId] [userId]  
 
 delUser <userId>  
 
