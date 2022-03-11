@@ -1,4 +1,4 @@
-# -movie-marathon
+# movie-marathon
 
 The goal of this program is to create structure for movies enthusiasts to pick their favourit movies for marathon. All users can enter their prefered movies which they want to watch, or they can delete the movie from their list.  
 Users and movies are identified by their unique number. All users create a tree where every user can add new users as children to his node. At the beginning there is a root with undetified by number 0. Every node except for root can be deleted from the tree.  
