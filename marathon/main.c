@@ -54,8 +54,8 @@ int marathonn(unsigned long user_id, unsigned long k) {
 #define BUFF_SIZE 1024
 #define MAX_PARSABLE_INT 3000000000ull
 
-// zwraca 0 wtedy i tylko wtedy gdy wczytany int nie ma zer wiodących i 
-// nazely do przedziału [0, MAX_PARSABLE_INT] 
+// returns 0 if and only if loaded int has no leading zeros and 
+// belongs to [0, MAX_PARSABLE_INT]
 int parse_int(char* buff, int buff_len, int* pos, unsigned long* x) {
 	if(*pos == buff_len)
 		return 1;
@@ -96,7 +96,7 @@ int main(){
 		}
 
 		if(len == 0 || buff[0] == '#') {
-			// Nic do zrobienia
+			// nothing to do
 		} else if(strncmp(buff, "addUser ", 8) == 0) {
 			pos = 8;
 			unsigned long arg1;
