@@ -4,7 +4,7 @@
 #include "List.h"
 #include "Tree.h"
 
-//zwalnienie całej pamięci
+//free entire memory
 void freememory(){
 	for(unsigned int i = 1; i <65536; i++){
 		if(position[i] !=NULL){
@@ -19,13 +19,13 @@ void freememory(){
 	position[0] = NULL;
 }
 
-//ustawianie wskaźników node-elementów a i b na siebie nawzajem
+//set nodeelem a and b to point at each other
 void connectne(Nodeelem* a, Nodeelem* b){
 	a->next = b;
 	b->prev = a;
 }
 
-//tworzenie nowego nodeelema
+//create new nodeelem
 Nodeelem* newne(Node* x){
 	Nodeelem* r = malloc(sizeof(Nodeelem));
 	if(r == NULL){
@@ -40,7 +40,7 @@ Nodeelem* newne(Node* x){
 	}
 }
 
-//tworzenie listy nodeelemów
+//create new nodeelem list
 Nodelist* createnl(){
 	Nodelist* r = malloc(sizeof(Nodelist));
 	if(r == NULL){
@@ -55,7 +55,7 @@ Nodelist* createnl(){
 	}
 }
 
-//tworzenie nowego noda
+//create new node
 Node* newnode(unsigned int x){
 	Node* r = malloc(sizeof(Node));
 	if(r == NULL){
@@ -74,7 +74,7 @@ Node* newnode(unsigned int x){
 	}
 }
 
-//dołączanie nodeelem o wartości n za nodeelem x
+//connect nodeelem with value n to nodeelem x
 Nodeelem* insertne(Nodeelem* x, Node* n){
 	Nodeelem* y = newne(n);
 	connectne(y, x->next);
@@ -82,12 +82,12 @@ Nodeelem* insertne(Nodeelem* x, Node* n){
 	return y;
 }
 
-//dołączanie nodelem o wartości n na początek nodelisty
+//connect nodeelem with value n at the beggining of the list
 Nodeelem* pushfrontne(Nodelist* x, Node* n){
 	return insertne(x->beg, n);
 }
 
-//usuwanie nodeelem o wartości a z nodelisty x
+//delete nodeelem with value a from list x
 void del(Nodelist* x, Node* a){
 		connectne(a->nepointer->prev, x->beg->next);
 		connectne(x->end->prev, a->nepointer->next);
