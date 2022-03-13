@@ -4,14 +4,14 @@
 typedef struct Elem Elem;
 typedef struct List List;
 
-//element trzymający id filmu i wskaźnik na następny film
+//element containing film id and pointer to next film
 struct Elem {
 	Elem *prev, *next;
 	long int val;
 
 };
 
-//lista filmów
+//list of all films
 struct List {
 	Elem *beg, *end;
 };
