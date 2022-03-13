@@ -5,11 +5,11 @@ typedef struct Node Node;
 typedef struct Nodeelem Nodeelem;
 typedef struct Nodelist Nodelist;
 
-//Node reprezentuje Usera w drzewie
+//Node representing user in the tree
 struct Node {
 	unsigned int id;
 	List *film;
-	//neighbours reprezentuje liste użytkowników dodatych przez niego
+	//neighbours represents list of all users added by user id
 	Nodelist *neighbours;
 	Nodeelem *nepointer;
 };
@@ -23,7 +23,7 @@ struct Nodeelem {
 	Node *val;
 };
 
-//tablica wskaźników na pozycje użytkownika w drzewie
+//array of pointers to each user in the tree
 Node* position[65536];
 
 void freememory();
