@@ -61,7 +61,7 @@ int parse_int(char* buff, int buff_len, int* pos, unsigned long* x) {
 		return 1;
 
 	if(buff[*pos] == '0' && *pos + 1 != buff_len && isdigit(buff[*pos + 1]))
-		return 1; // wiodące zera
+		return 1; // leading zeros
 
 	unsigned long long a = 0;
 	while (*pos != buff_len && isdigit(buff[*pos])) {
