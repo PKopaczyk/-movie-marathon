@@ -3,13 +3,13 @@
 #include <stdbool.h>
 #include "List.h"
 
-//ustawianie wskaźników elementów a i b na siebie nawzajem
+//set a and b to poit at each other
 void connect(Elem* a, Elem* b){
 	a->next = b;
 	b->prev = a;
 }
 
-//tworzenie nowgo elementu
+//create new element
 Elem* new(long int x){
 	Elem* r = malloc(sizeof(Elem));
 	if(r==NULL){
@@ -23,7 +23,7 @@ Elem* new(long int x){
 	}
 }
 
-//tworzenie nowej listy
+//create new list
 List* create(){
 	List* r = malloc(sizeof(List));
 	if(r==NULL){
@@ -36,7 +36,7 @@ List* create(){
 	return r;
 }
 
-//dołączanie elementu o wartości n za element x
+//insert element with value n after element x
 Elem* insert(Elem* x, long int n){
 	Elem* y = new(n);
 	if(y == NULL){
@@ -48,22 +48,22 @@ Elem* insert(Elem* x, long int n){
 	return y;
 }
 
-//wkładanie elementu z tyłu listy
+//insert element at the end of the list
 Elem* pushback(List* x, long int n){
 	return insert(x->end->prev, n);
 }
 
-//wkładanie elementu z przodu listy
+//insert element at the beggining of the list
 Elem* pushfront(List* x, long int n){
 	return insert(x->beg, n); //bez ->next
 }
 
-//sprawdzanie czy lista jest pusta
+//check if list is empty
 bool isempty(List* x){
 	return x->end == x->beg->next;
 }
 
-//wkładanie elementu o wartości n do posortowanej listy
+//insert element with value n to sorted list
 Elem* sortinsert(List* x, long int n){
 	if (isempty(x) || x->end->prev->val < n)
 		return pushback(x, n);
@@ -79,7 +79,7 @@ Elem* sortinsert(List* x, long int n){
 	}
 }
 
-//usuwanie elementu o wartości n z listy
+//delete element with value n from list x
 void delelem(List* x, long int n){
 	Elem* a = x->beg->next;
 	while(a != x->end){
@@ -92,7 +92,7 @@ void delelem(List* x, long int n){
 	}
 }
 
-//sprawdzanie czy element o wartości n jest w liście
+//check if element with value n is in list x
 bool checkmovie(List* x, long int n){
 	Elem* a = x->beg->next;
 	while(a != x->end){
@@ -106,7 +106,7 @@ bool checkmovie(List* x, long int n){
 	return true;
 }
 
-//łączenie dwóch posortowanych list
+//merge two sorted lists
 List* merge(List* x, List* y, long int k){
 	List* l = create();
 	if(l == NULL){
@@ -155,7 +155,7 @@ List* merge(List* x, List* y, long int k){
 	}
 }
 
-//łączenie dwuch posortowanych list, pierwsza lista jest uprzywilejowana
+//merge two sorted lists but first one has a priority
 List* merge2(List* x, List* y, long int k){
 	List* l = create();
 	if(l == NULL){
@@ -219,7 +219,7 @@ List* merge2(List* x, List* y, long int k){
 	}
 }
 
-//wypisywanie wartości elementów listy
+//print values of all elements from the list 
 void print(List* x){
 	if(x->beg->next == x->end)
 		printf("NONE");
@@ -235,7 +235,7 @@ void print(List* x){
 	printf("\n");
 }
 
-//zwalnianie pamięci z całej listy
+//free list memory
 void freelist(List* x){
 	for(Elem* i = x->beg->next; i!=x->end; i=i->next)
 		free(i->prev);
